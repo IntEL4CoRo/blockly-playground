@@ -1,0 +1,54 @@
+joint_inits:
+  torso_lift_joint: 0.1687062500000004
+  r_upper_arm_roll_joint: 0
+  r_shoulder_pan_joint: 0
+  r_shoulder_lift_joint: 0
+  r_forearm_roll_joint: 0
+  r_elbow_flex_joint: -1.1400000000000001
+  r_wrist_flex_joint: -1.0499999999999998
+  r_wrist_roll_joint: 0
+  l_upper_arm_roll_joint: 0
+  l_shoulder_pan_joint: 0
+  l_shoulder_lift_joint: 0
+  l_forearm_roll_joint: 0
+  l_elbow_flex_joint: -1.1399999999999995
+  l_wrist_flex_joint: -1.0499999999999998
+  l_wrist_roll_joint: 0
+  head_pan_joint: 0
+  head_tilt_joint: 0
+
+# add_odom_joints: true
+add_odom_joints:
+  lin_odom_x_joint: true
+  lin_odom_y_joint: true
+  lin_odom_z_joint: false
+  ang_odom_x_joint: false
+  ang_odom_y_joint: false
+  ang_odom_z_joint: true
+
+pub_object_marker_array:
+  free_bodies_only: False # Only publish the marker array of free objects
+  robot_bodies_rate: 0.0 # The frequency to publish the marker array of robot
+  world_bodies_rate: 20.0 # The frequency to publish the marker array of world
+  spawned_object_bodies_rate: 0.0 # The frequency to publish the marker array of spawned objects
+
+
+pub_tf:
+  free_bodies_only: True # Only publish the tf of free objects
+  robot_bodies_rate: 0.0 # The frequency to publish the tf of robot
+  world_bodies_rate: 0.0 # The frequency to publish the tf of world
+  spawned_object_bodies_rate: 0.0 # The frequency to publish the tf of spawned objects
+
+pub_object_state_array:
+  free_bodies_only: False
+  robot_bodies_rate: 0
+  world_bodies_rate:  0.0
+
+pub_joint_states:
+  world_bodies_rate: 0.0
+
+pub_base_pose_rate: 20.0
+
+spawn_and_destroy_objects_rate: 0.0
+
+root_frame_id: odom_combined

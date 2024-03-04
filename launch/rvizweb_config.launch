@@ -1,0 +1,32 @@
+<launch>
+    <!-- Update Rvizweb client config -->
+    <arg name="client_config" default="$(dirname)/rvizweb_config/pr2.json"/>
+    <!-- Restart interactive marker proxy -->
+    <arg name="interactive_marker" default="true"/>
+    <arg name="target_frame" default="/base_link"/>
+    <!-- Restart rosbridge -->
+    <arg name="restart_rosbridge" default="false"/>
+    <!-- Restart tf2_web_republisher -->
+    <arg name="restart_tf2_republisher" default="false"/>
+    
+    <group if="$(arg interactive_marker)">
+        <node pkg="interactive_marker_proxy" type="proxy" name="interactive_marker_proxy">
+            <remap from="target_frame" to="$(arg target_frame)" />
+            <remap from="topic_ns" to="/eef_control" />
+        </node>
+    </group>
+
+    <group if="$(arg restart_rosbridge)">
+        <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+            <arg name="port" value="9090" />
+        </include>
+    </group>
+
+    <group if="$(arg restart_tf2_republisher)">
+        <node name="tf2_web_republisher" pkg="tf2_web_republisher" type="tf2_web_republisher" respawn="false" output="screen"/>
+    </group>
+
+    <include file="$(find rvizweb)/launch/update_config.launch">
+        <arg name="config_file" value="$(arg client_config)" />
+    </include>
+</launch>

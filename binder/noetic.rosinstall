@@ -1,0 +1,46 @@
+- git:
+    local-name: giskardpy
+    uri: https://github.com/SemRoCo/giskardpy.git
+    version: mujoco_actions_devel
+- git: 
+    local-name: giskard_msgs
+    uri: https://github.com/SemRoCo/giskard_msgs.git
+    version: devel
+- git:
+    local-name: qpoases
+    uri: https://github.com/SemRoCo/qpOASES.git
+    version: v3.2.1
+- git:
+    local-name: orocos_kinematics_dynamics
+    uri: https://github.com/orocos/orocos_kinematics_dynamics.git
+    version: v1.5.1
+- git:
+    local-name: ros_controllers
+    uri: https://github.com/ros-controls/ros_controllers.git
+    version: noetic-devel
+- git:
+    local-name: iai_pr2
+    uri: https://github.com/code-iai/iai_pr2.git
+    version:  mujoco_sim_setup
+- git: 
+    local-name: iai_naive_kinematics_sim
+    uri: https://github.com/code-iai/iai_naive_kinematics_sim.git
+    version: master
+- git: 
+    local-name: omni_pose_follower
+    uri: https://github.com/code-iai/omni_pose_follower.git
+    version: master
+- git:
+    local-name: mujoco_msgs
+    uri: https://github.com/HoangGiang93/mujoco_msgs.git
+- git:
+    local-name: mujoco_sim
+    uri: https://github.com/HoangGiang93/mujoco_sim.git
+# Can not merge the the following repo because of the SSH urls in the .gitmodules file
+# - git:
+#     local-name: mujoco_robots
+#     uri: https://github.com/maltehue/mujoco_robots.git
+#     version: main
+# - git:
+#     local-name: mujoco_world
+#     uri: https://github.com/HoangGiang93/mujoco_world.git

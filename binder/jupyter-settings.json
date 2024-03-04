@@ -1,0 +1,23 @@
+{
+  "@jupyterlab/apputils-extension:themes": {
+    "theme": "JupyterLab Light",
+    "theme-scrollbars": true
+  },
+  "@jupyterlab/apputils-extension:notification": {
+    "checkForUpdates": false,
+    "doNotDisturbMode": false,
+    "fetchNews": false
+  },
+  "@jupyterlab/filebrowser-extension:browser": {
+    "showHiddenFiles": true
+  },
+  "@jupyterlab/codemirror-extension:plugin": {
+    "defaultConfig": {
+      "codeFolding": true,
+      "lineWrap": false
+    }
+  },
+  "@jupyterlab/translation-extension:plugin": {
+    "locale": "us_EN"
+  }
+}

@@ -1,0 +1,60 @@
+<launch>
+    <arg name="web" default="true"/>
+    <arg name="gui" default="false"/>
+    <arg name="mujoco_suffix" default=""/>
+    <arg name="mujoco_robot" default="$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2_without_virtual_joints.urdf"/>
+    <arg name="mujoco_world" default="$(dirname)/mujoco_config/world.xml"/>
+
+    <!-- From iai_pr2_sim mujoco.launch -->
+    <arg name="namespace" default="pr2" />
+    <param name="robot_description" textfile="$(arg mujoco_robot)"/>
+
+    <node pkg="iai_naive_kinematics_sim" type="map_odom_transform_publisher.py" name="map_odom_transform_publisher" output="screen">
+        <param name="parent_frame" value="map" />
+        <param name="child_frame" value="odom_combined" />
+    </node>
+
+    <group ns="$(arg namespace)">
+        <include file="$(find mujoco_sim)/launch/mujoco_sim$(arg mujoco_suffix).launch">
+            <arg name="use_urdf" value="true" />
+            <arg name="config" value="$(dirname)/mujoco_config/pr2.yaml" />
+            <arg name="robot" value="$(arg mujoco_robot)" />
+            <arg name="world" value="$(arg mujoco_world)" />
+            <arg name="disable_parent_child_collision_level" value="2" />
+        </include>
+        <rosparam command="load" file="$(find iai_pr2_sim)/config/ros_control_sim_mujoco.yaml" />
+        <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" args="spawn
+        joint_state_controller 
+        whole_body_controller 
+        l_gripper_l_finger_controller
+        r_gripper_l_finger_controller" />
+        <!-- <node name="rqt_joint_trajectory_controller" pkg="rqt_joint_trajectory_controller" type="rqt_joint_trajectory_controller" /> -->
+    </group>
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher" name="joint_state_publisher" output="screen">
+        <rosparam param="source_list">
+        - pr2/joint_states
+        </rosparam>
+        <param name="rate" value="20" />
+        <param name="use_gui" value="False" />
+    </node>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+
+    <!-- iai_pr2_sim mujoco.launch -->
+    <include file="$(find giskardpy)/launch/giskardpy_pr2_mujoco.launch" />
+
+    <!-- launch rvizweb on binder -->
+    <group if="$(arg web)">
+        <include file="$(dirname)/rvizweb_config.launch">
+            <arg name="client_config" value="$(dirname)/rvizweb_config/pr2_mujoco.json" />
+            <arg name="target_frame" default="/base_link"/>
+        </include>
+    </group>
+
+    <!-- launch rivz locally -->
+    <group if="$(arg gui)">
+        <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find giskardpy)/launch/rviz_config/standalone.rviz" /> -->
+    </group>
+
+</launch>
