@@ -4,6 +4,8 @@
 
 Block-based programming for household robots.
 
+![screenshot](./screenshot/Screenshot.png)
+
 Examples on Binderhub:
 - https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/main?labpath=examples/playground.jpblockly
 
