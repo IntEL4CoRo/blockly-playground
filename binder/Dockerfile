@@ -62,6 +62,7 @@ RUN rm -rf src/iai_pr2/iai_pr2_donbot
 RUN catkin build
 
 # Install blockly jupyterlab extensions
+RUN npm install -g yarn
 RUN pip install git+https://github.com/yxzhan/jupyterlab-blockly.git@dev
 RUN pip install jupyterlab-git~=0.44.0
 
