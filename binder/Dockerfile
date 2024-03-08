@@ -72,8 +72,12 @@ COPY --chown=${NB_USER}:users binder/giskard_decomposed_obj ${ROS_WS}/src/giskar
 COPY --chown=${NB_USER}:users . /home/${NB_USER}/blockly-playground
 WORKDIR /home/${NB_USER}/blockly-playground
 RUN git config --global --add safe.directory ${PWD}
-# Soft link the ROS workspace directory to the working directory
+# Link the ROS workspace directory to the working directory
 RUN ln -s ${ROS_WS} ${PWD}/ROS_WS
+# Overrides the kitchen and apartment xml files
+COPY --chown=${NB_USER}:users ./launch/mujoco_config/iai_apartment_with_window4.xml ${ROS_WS}/src/mujoco_world/mujoco_world/model/iai_apartment/
+COPY --chown=${NB_USER}:users ./launch/mujoco_config/iai_kitchen_python.xml ${ROS_WS}/src/mujoco_world/mujoco_world/model/iai_kitchen/
+
 # jupyterlab interface configuration
 COPY --chown=${NB_USER}:users binder/webapps.json ${ROS_WS}/src/rvizweb/webapps/app.json
 COPY --chown=${NB_USER}:users binder/jupyter-settings.json /opt/conda/share/jupyter/lab/settings/overrides.json

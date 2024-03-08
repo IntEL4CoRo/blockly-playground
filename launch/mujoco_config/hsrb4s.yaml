@@ -1,6 +1,6 @@
 robots: [hsrb4s]
 
-pose_init: [0, 0, 0, 0, 0, 0]
+pose_init: [1, 1, 0, 0, 0, 0]
 
 joint_inits:
   arm_flex_joint: -0.5

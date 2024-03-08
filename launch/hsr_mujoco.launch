@@ -2,7 +2,7 @@
     <arg name="web" default="true"/>
     <arg name="gui" default="false"/>
     <arg name="mujoco_suffix" default=""/>
-    <arg name="mujoco_robot" default="$(find hsr_mujoco)/model/hsrb4s_tray.xml"/>
+    <arg name="mujoco_robot" default="$(find hsr_mujoco)/model/hsrb4s.xml"/>
     <arg name="mujoco_world" default="$(find hsr_mujoco)/model/world_containers.xml"/>
 
     <!-- roslaunch hsr_mujoco hsrb4s_velocity.launch  -->

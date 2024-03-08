@@ -24,8 +24,8 @@ SIDECAR = {
     'xpra': None
 }
 VIS_TOOLS = {
-    'rvizweb': False,
-    'xpra': True
+    'rvizweb': True,
+    'xpra': False
 }
 # To manage the roslaunch process in the background
 LAUNCH_PROCESS = None
@@ -199,7 +199,7 @@ def launch_robot(robot, sim_env=None, restart=True):
         'world_only_containers': '$(find hsr_mujoco)/model/world_only_containers.xml',
         'world_particle_container': '$(find hsr_mujoco)/model/world_particle_container.xml',
         'Apartment': '$(find mujoco_world)/model/iai_apartment/iai_apartment_with_window4.xml',
-        'Waterfront DM': '$(find mujoco_world)/model/waterfront/world.xml',
+        # 'Waterfront DM': '$(find mujoco_world)/model/waterfront/world.xml',
         'Kitchen': '$(find mujoco_world)/model/iai_kitchen/iai_kitchen_python.xml',
     }
     if LAUNCH_PROCESS is not None and not restart:
@@ -209,6 +209,12 @@ def launch_robot(robot, sim_env=None, restart=True):
     if robot in robot_dict:
         if sim_env is not None and sim_env in env_dict:
             robot_dict[robot]['extra_param'] = f'mujoco_world:={env_dict[sim_env]}'
+            if sim_env in ['Apartment', 'Kitchen']:
+                VIS_TOOLS['rvizweb'] = False
+                VIS_TOOLS['xpra'] = True
+            else:
+                VIS_TOOLS['rvizweb'] = True
+                VIS_TOOLS['xpra'] = False
         _launch_robot(robot_dict[robot])
         rospy.init_node('giskard_playground')
         gk_wrapper = GiskardWrapper()
