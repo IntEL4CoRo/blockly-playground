@@ -2,13 +2,17 @@
   {
     "name": "rvizweb",
     "title": "Rvizweb",
-    "url": "proxy/8001/rvizweb/webapps/rvizweb/build/www/index.html"
+    "url": "proxy/8001/rvizweb/webapps/rvizweb/build/www/index.html",
+    "mode": "split-right",
+    "start": true
   },
   {
     "name": "XPRA",
     "title": "Xpra Desktop",
     "icon": "proxy/8001/rvizweb/webapps/xpra-logo.svg",
-    "url": "xprahtml5/index.html"
+    "url": "xprahtml5/index.html",
+    "mode": "split-left",
+    "start": true
   },
   {
     "name": "rosgraph",

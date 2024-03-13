@@ -1,6 +1,6 @@
 #!/bin/bash
 source ${ROS_WS}/devel/setup.bash
 roscore &
-roslaunch --wait rvizweb rvizweb.launch &
+roslaunch --wait rvizweb rvizweb.launch config_file:=${PWD}/launch/rvizweb_config/pr2_mujoco.json &
 
 exec "$@"

@@ -24,7 +24,7 @@ SIDECAR = {
     'xpra': None
 }
 VIS_TOOLS = {
-    'rvizweb': True,
+    'rvizweb': False,
     'xpra': False
 }
 # To manage the roslaunch process in the background
@@ -209,12 +209,12 @@ def launch_robot(robot, sim_env=None, restart=True):
     if robot in robot_dict:
         if sim_env is not None and sim_env in env_dict:
             robot_dict[robot]['extra_param'] = f'mujoco_world:={env_dict[sim_env]}'
-            if sim_env in ['Apartment', 'Kitchen']:
-                VIS_TOOLS['rvizweb'] = False
-                VIS_TOOLS['xpra'] = True
-            else:
-                VIS_TOOLS['rvizweb'] = True
-                VIS_TOOLS['xpra'] = False
+            # if sim_env in ['Apartment', 'Kitchen']:
+            #     VIS_TOOLS['rvizweb'] = False
+            #     VIS_TOOLS['xpra'] = True
+            # else:
+            #     VIS_TOOLS['rvizweb'] = True
+            #     VIS_TOOLS['xpra'] = False
         _launch_robot(robot_dict[robot])
         rospy.init_node('giskard_playground')
         gk_wrapper = GiskardWrapper()
