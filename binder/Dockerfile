@@ -63,7 +63,6 @@ RUN catkin build
 
 # Install blockly jupyterlab extensions
 RUN npm install -g yarn
-RUN pip install git+https://github.com/yxzhan/jupyterlab-blockly.git@dev
 RUN pip install jupyterlab-git~=0.44.0
 
 # Copy the giskard tmp meshes to skip the converting step
@@ -87,3 +86,5 @@ CMD ["start-notebook.sh"]
 
 # Update the rvizweb
 RUN cd ${ROS_WS}/src/rvizweb && git pull
+# Update the blockly extensions
+RUN pip install git+https://github.com/yxzhan/jupyterlab-blockly.git@dev
