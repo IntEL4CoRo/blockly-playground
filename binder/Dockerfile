@@ -84,3 +84,6 @@ COPY --chown=${NB_USER}:users binder/jupyter-settings.json /opt/conda/share/jupy
 COPY --chown=${NB_USER}:users binder/entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["start-notebook.sh"]
+
+# Update the rvizweb
+RUN cd ${ROS_WS}/src/rvizweb && git pull
