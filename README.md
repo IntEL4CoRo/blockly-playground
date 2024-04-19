@@ -1,16 +1,13 @@
 # blockly-playground
 
-[![Binder](https://binder.intel4coro.de/badge_logo.svg)](https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/main?urlpath=lab/tree/examples/playground.jpblockly)
+[![Binder](https://binder.intel4coro.de/badge_logo.svg)](https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/stretch?urlpath=lab/tree/examples/playground.jpblockly)
 
 Block-based programming for household robots.
 
 ![screenshot](./screenshot/Screenshot.png)
 
 Examples on Binderhub:
-- https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/main?urlpath=lab/tree/examples/playground.jpblockly
-
-<!-- - PR2: https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/main?labpath=examples/pr2.jpblockly -->
-<!-- - HSR: https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/main?labpath=examples/hsr.jpblockly -->
+- https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/stretch?urlpath=lab/tree/examples/playground.jpblockly
 
 ## Software Components
 
@@ -26,13 +23,7 @@ Repo: https://github.com/google/blockly
 
 Giskard is an open source motion planning framework for ROS, which uses constraint and optimization based task space control to generate trajectories for the whole body of mobile manipulators.
 
-Repo: https://github.com/SemRoCo/giskardpy/tree/mujoco_actions_devel
-
-### Mujoco (2.3.7) simulator
-
-MuJoCo stands for Multi-Joint dynamics with Contact. It is a general purpose physics engine that aims to facilitate research and development in robotics, biomechanics, graphics and animation, machine learning, and other areas which demand fast and accurate simulation of articulated structures interacting with their environment.
-
-Repo: https://github.com/HoangGiang93/mujoco_sim
+Repo: https://github.com/SemRoCo/giskardpy/tree/devel
 
 
 ## Development

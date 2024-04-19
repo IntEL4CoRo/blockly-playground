@@ -1,28 +1,28 @@
 {
   "globalOptions": {
     "background": "#333333",
-    "fixedFrame": "/odom"
+    "fixedFrame": "/map"
   },
   "sidebarOpened": false,
   "viewerOptions": {
     "camera": {
       "position": {
-        "x": 5,
+        "x": 3,
         "y": 0,
-        "z": 5
+        "z": 3
       }
     },
     "cameraControls": {
       "center": {
-        "x": 1,
+        "x": 0,
         "y": 0,
         "z": 0
       }
     },
     "directionalLight": {
       "position": {
-        "x": 3,
-        "y": 0,
+        "x": -3,
+        "y": -3,
         "z": 5
       }
     }
@@ -42,16 +42,16 @@
       "isShown": true,
       "name": "Robot model",
       "options": {
-        "param": "/hsrb4s/robot_description",
-        "tfPrefix": ""
+        "param": "robot_description",
+        "tfPrefix": "stretch"
       },
       "type": "urdf"
     },
     {
       "isShown": true,
-      "name": "mujoco vis",
+      "name": "Ghost",
       "options": {
-        "topic": "/mujoco/visualization_marker_array"
+        "topic": "/giskard/visualization_marker_array"
       },
       "type": "markerArray"
     },

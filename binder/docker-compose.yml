@@ -7,18 +7,19 @@ services:
       dockerfile: ./binder/Dockerfile
     stdin_open: true
     tty: true
-    ports: 
-      - 8888:8888
+    network_mode: host
+    # ports: 
+    #   - 8888:8888
       # - 11311:11311
     privileged: true
     # user: root
     # user: jovyan
     # working_dir: /home/jovyan/
     command: jupyter lab --allow-root --NotebookApp.token='' --no-browser --ip=0.0.0.0
-    # entrypoint: ["/home/jovyan/blockly-playground/binder/entrypoint.sh"]
+    entrypoint: ["/home/jovyan/blockly-playground/binder/entrypoint.sh"]
     volumes:
       - ../:/home/jovyan/blockly-playground:rw
-      # - /usr/share/vulkan/icd.d:/usr/share/vulkan/icd.d
+      - ${HOST_GISKARD_WS}:/home/jovyan/workspace/ros/src/giskardpy
       # - /tmp/.X11-unix:/tmp/.X11-unix:rw
     # environment:
       # - DISPLAY
