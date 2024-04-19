@@ -43,6 +43,7 @@ RUN pip install termcolor pydot triangle cython~=0.19
 WORKDIR  ${ROS_WS}
 RUN catkin build
 
+RUN npm i -g yarn
 
 # Copy the giskard tmp meshes to skip the converting step
 COPY --chown=${NB_USER}:users binder/giskard_decomposed_obj ${ROS_WS}/src/giskardpy/tmp
@@ -53,9 +54,17 @@ RUN git config --global --add safe.directory ${PWD}
 # Link the ROS workspace directory to the working directory
 RUN ln -s ${ROS_WS} ${PWD}/ROS_WS
 
+# Install blockly jupyterlab extension from source
+RUN cd jupyterlab-blockly && \
+    pip install -e ".[dev]" && \
+    jupyter labextension develop . --overwrite && \
+    npm run build
+
+# Install from build package
+# RUN pip install https://raw.githubusercontent.com/yxzhan/jupyterlab-blockly/dev/dist/jupyterlab_blockly-0.3.0a4.tar.gz
+
 # jupyterlab interface configuration
 COPY --chown=${NB_USER}:users binder/webapps.json ${ROS_WS}/src/rvizweb/webapps/app.json
 COPY --chown=${NB_USER}:users binder/entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["start-notebook.sh"]
-

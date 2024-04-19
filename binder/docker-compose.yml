@@ -1,7 +1,7 @@
 version: '3'
 services:
   blockly-playground:
-    image: blockly-playground:latest
+    image: blockly-playground:stretch
     build:
       context: ../
       dockerfile: ./binder/Dockerfile
@@ -14,12 +14,13 @@ services:
     privileged: true
     # user: root
     # user: jovyan
-    # working_dir: /home/jovyan/
+    working_dir: /home/jovyan/
     command: jupyter lab --allow-root --NotebookApp.token='' --no-browser --ip=0.0.0.0
     entrypoint: ["/home/jovyan/blockly-playground/binder/entrypoint.sh"]
     volumes:
-      - ../:/home/jovyan/blockly-playground:rw
-      - ${HOST_GISKARD_WS}:/home/jovyan/workspace/ros/src/giskardpy
+      - ../examples:/home/jovyan/blockly-playground/examples:rw
+      # Override the the giskard worspace with the host workspace
+      # - ${HOST_GISKARD_WS}:/home/jovyan/workspace/ros/src/giskardpy
       # - /tmp/.X11-unix:/tmp/.X11-unix:rw
     # environment:
       # - DISPLAY

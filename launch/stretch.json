@@ -43,7 +43,7 @@
       "name": "Robot model",
       "options": {
         "param": "robot_description",
-        "tfPrefix": "stretch"
+        "tfPrefix": ""
       },
       "type": "urdf"
     },

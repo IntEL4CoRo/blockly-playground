@@ -18,3 +18,7 @@
     local-name: stretch_ros
     uri: https://github.com/hello-robot/stretch_ros.git
     version: noetic
+- git:
+    local-name: orocos_kinematics_dynamics
+    uri: https://github.com/orocos/orocos_kinematics_dynamics.git
+    version: v1.5.1
