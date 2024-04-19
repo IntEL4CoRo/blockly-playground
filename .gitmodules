@@ -1,0 +1,3 @@
+[submodule "jupyterlab-blockly"]
+	path = jupyterlab-blockly
+	url = https://github.com/yxzhan/jupyterlab-blockly
