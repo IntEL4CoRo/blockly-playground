@@ -10,17 +10,16 @@ services:
     network_mode: host
     # ports: 
     #   - 8888:8888
-      # - 11311:11311
     privileged: true
     # user: root
     # user: jovyan
-    working_dir: /home/jovyan/
+    # working_dir: /home/jovyan/
     command: jupyter lab --allow-root --NotebookApp.token='' --no-browser --ip=0.0.0.0
-    entrypoint: ["/home/jovyan/blockly-playground/binder/entrypoint.sh"]
+    entrypoint: ["/home/jovyan/blockly-playground/binder/local-entrypoint.sh"]
     volumes:
       - ../examples:/home/jovyan/blockly-playground/examples:rw
       # Override the the giskard worspace with the host workspace
-      # - ${HOST_GISKARD_WS}:/home/jovyan/workspace/ros/src/giskardpy
+      # - ${HOST_GISKARD_WS}:/home/jovyan/workspace/giskard_ws/src/giskardpy
       # - /tmp/.X11-unix:/tmp/.X11-unix:rw
     # environment:
       # - DISPLAY
