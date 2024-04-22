@@ -10,8 +10,18 @@ from rqt_joint_trajectory_controller import joint_limits_urdf
 rospy.init_node('giskard_blockly_playground')
 # Giskard wrapper instance
 gk_wrapper = GiskardWrapper()
-CMD_VEL_TOPIC = '/cmd_vel'
+CMD_VEL_TOPIC = None
 ROBOT_DESCRIPTION = '/robot_description'
+
+# Set robot description files ROS param
+def set_robot_description(robot_description='/robot_description'):
+    global ROBOT_DESCRIPTION
+    ROBOT_DESCRIPTION = robot_description
+    
+# Set cmd_vel ROS topic
+def set_robot_description(cmd_vel='/cmd_vel'):
+    global CMD_VEL_TOPIC
+    CMD_VEL_TOPIC = cmd_vel
 
 # moving motion
 def add_cartesian_position(pos, root_link='map', tip_link='base_link'):
@@ -73,9 +83,13 @@ def add_cartesian_pose(pos, ori, root_link='map', tip_link='base_link'):
 def get_links():
     return gk_wrapper.world.get_group_info(gk_wrapper.world.get_group_names()[0]).links
 
-# get all robot links
+# get controlled joints
 def get_controlled_joints():
     return gk_wrapper.world.get_controlled_joints(gk_wrapper.world.get_group_names()[0])
+
+# get joint position limits
+def get_controlled_joints_limits():
+    return joint_limits_urdf.get_joint_limits(key=ROBOT_DESCRIPTION)
 
 # get joint state
 def get_joint_state():
@@ -102,42 +116,43 @@ def cmd_vel_turn(speed, time):
 
 # Diplay joint trajectory controller
 def display_joint_trajectory_controller():
-    cmd_vel_pub = rospy.Publisher(CMD_VEL_TOPIC, Twist, queue_size=100)
-    cmd_vel_msg = Twist()
-    # robot_steering, similar to "rqt_robot_steering"
-    linear_x = FloatSlider(
-        value=0,
-        min=-1,
-        max=1,
-        step=0.1,
-        description='Moving',
-        orientation='vertical',
-        readout=True,
-        readout_format='.1f',
-    )
+    if CMD_VEL_TOPIC is not None:
+        cmd_vel_pub = rospy.Publisher(CMD_VEL_TOPIC, Twist, queue_size=100)
+        cmd_vel_msg = Twist()
+        # robot_steering, similar to "rqt_robot_steering"
+        linear_x = FloatSlider(
+            value=0,
+            min=-1,
+            max=1,
+            step=0.1,
+            description='Moving',
+            orientation='vertical',
+            readout=True,
+            readout_format='.1f',
+        )
 
-    def on_linear_x_change(v):
-        cmd_vel_msg.linear.x = v
-        cmd_vel_pub.publish(cmd_vel_msg)
+        def on_linear_x_change(v):
+            cmd_vel_msg.linear.x = v
+            cmd_vel_pub.publish(cmd_vel_msg)
 
-    linear_x.observe(lambda v: on_linear_x_change(v['new']), names='value')
+        linear_x.observe(lambda v: on_linear_x_change(v['new']), names='value')
 
-    # slider for rotation velocity
-    angular_z = FloatSlider(
-        value=0,
-        min=-1,
-        max=1,
-        step=0.1,
-        description='Rotation',
-        readout=True,
-        readout_format='.1f',
-    )
+        # slider for rotation velocity
+        angular_z = FloatSlider(
+            value=0,
+            min=-1,
+            max=1,
+            step=0.1,
+            description='Rotation',
+            readout=True,
+            readout_format='.1f',
+        )
 
-    def on_angular_z_change(v):
-        cmd_vel_msg.angular.z = -v
-        cmd_vel_pub.publish(cmd_vel_msg)
+        def on_angular_z_change(v):
+            cmd_vel_msg.angular.z = -v
+            cmd_vel_pub.publish(cmd_vel_msg)
 
-    angular_z.observe(lambda v: on_angular_z_change(v['new']), names='value')
+        angular_z.observe(lambda v: on_angular_z_change(v['new']), names='value')
 
     def generate_slider(config):
         slider = FloatSlider(
@@ -146,11 +161,11 @@ def display_joint_trajectory_controller():
             max=config['max'],
             step=(config['max'] - config['min']) / 20,
             continuous_update=False,
-            description=config['name'],
+            description=f"{config['name']} [{config['min']} to {config['max']}]",
             readout=True,
-            layout=Layout(width='80%'),
+            layout=Layout(width='90%'),
             style=dict(
-                description_width='10rem'
+                description_width='240px'
             ),
             readout_format='.3f',
         )
@@ -168,12 +183,16 @@ def display_joint_trajectory_controller():
         else:
             # print(f"Joint '{j_name}' not found in URDF!")
             return None
-    # Display Sliders
+    
+    # Create Sliders
     joint_limits = joint_limits_urdf.get_joint_limits(key=ROBOT_DESCRIPTION)
     joint_state = get_joint_state()
     joint_slider_config = [format_slider_config(i) for i in get_controlled_joints()]
     joint_slider_config = [x for x in joint_slider_config if x is not None]
     joint_slider_config = sorted(joint_slider_config, key=lambda x: x['name'])
     joint_slider_widgets = [generate_slider(i) for i in joint_slider_config]
-    display(Box([linear_x, angular_z]))
+    
+    # Display Sliders
+    if CMD_VEL_TOPIC is not None:
+        display(Box([linear_x, angular_z]))
     display(VBox(joint_slider_widgets))
