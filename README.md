@@ -1,13 +1,12 @@
 # blockly-playground
 
-[![Binder](https://binder.intel4coro.de/badge_logo.svg)](https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/stretch?urlpath=lab/tree/examples/playground.jpblockly)
+[![Binder](https://binder.intel4coro.de/badge_logo.svg)](https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/stretch?urlpath=lab/tree/examples/stretch.jpblockly)
 
 Block-based programming for household robots.
 
-![screenshot](./screenshot/Screenshot.png)
 
 Examples on Binderhub:
-- https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/stretch?urlpath=lab/tree/examples/playground.jpblockly
+- https://binder.intel4coro.de/v2/gh/IntEL4CoRo/blockly-playground.git/stretch?urlpath=lab/tree/examples/stretch.jpblockly
 
 ## Software Components
 
@@ -33,12 +32,10 @@ Repo: https://github.com/SemRoCo/giskardpy/tree/devel
 - Run Docker image with X-forwarding
 
   ```bash
-  xhost +local:docker && \
-  docker compose -f ./binder/docker-compose.yml up  --build && \
-  xhost -local:docker
+  docker compose -f ./binder/docker-compose.yml up  --build
   ```
 
-- Open Web browser and go to http://localhost:8888/lab/
+- Open Web browser and go to http://localhost:8888/lab/tree/examples/stretch.jpblockly
 
 - To stop and remove container:
 

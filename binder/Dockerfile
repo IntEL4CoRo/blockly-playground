@@ -16,17 +16,18 @@ COPY --chown=${NB_USER}:users binder/build_cmake_pybullet_3.10_double.sh /home/$
 RUN cd bullet3 && ./build_cmake_pybullet_3.10_double.sh
 ENV PYTHONPATH=${PYTHONPATH}:/home/${NB_USER}/bullet3/build_cmake/better_python:/home/${NB_USER}/bullet3/examples/pybullet
 
-# Initiate ROS workspace
+# Initiate GISKARD ROS workspace
 ENV ROS_WS=/home/${NB_USER}/workspace/ros
-WORKDIR ${ROS_WS}/src
-# A Workaround for fixing the issue of RvizWeb loading meshes with "file:///" path instead of "package:///".
-COPY --chown=${NB_USER}:users binder/me ${ROS_WS}/src/me
+ENV GISKARD_WS=/home/${NB_USER}/workspace/giskard_ws
+RUN mkdir -p ${GISKARD_WS}/src
+WORKDIR ${GISKARD_WS}/src
 COPY --chown=${NB_USER}:users binder/noetic.rosinstall /home/${NB_USER}/noetic.rosinstall
-RUN wstool merge /home/${NB_USER}/noetic.rosinstall \
+RUN  wstool init \
+  && wstool merge /home/${NB_USER}/noetic.rosinstall \
   && wstool update
 
 # Install dependencies
-WORKDIR  ${ROS_WS}
+WORKDIR  ${GISKARD_WS}
 USER root
 RUN rosdep update && apt update && apt dist-upgrade -y \
   && rosdep install -y --ignore-src --from-paths ./ -r \
@@ -39,20 +40,27 @@ RUN pip install -r src/giskardpy/requirements.txt
 # Install missing python packages (should be included in src/giskardpy/requirements.txt)
 RUN pip install termcolor pydot triangle cython~=0.19
 
-# Build ROS workspace
-WORKDIR  ${ROS_WS}
+# A Workaround for fixing the issue of RvizWeb loading meshes with "file:///" path instead of "package:///".
+COPY --chown=${NB_USER}:users binder/me ${ROS_WS}/src/me
+RUN cd ${ROS_WS} && catkin build
+
+# Build GISKARD workspace
+WORKDIR  ${GISKARD_WS}
+RUN catkin init
+RUN catkin config --extend ${ROS_WS}/devel
 RUN catkin build
+RUN echo "source ${GISKARD_WS}/devel/setup.bash" >> /home/${NB_USER}/.bashrc
 
 RUN npm i -g yarn
 
 # Copy the giskard tmp meshes to skip the converting step
-COPY --chown=${NB_USER}:users binder/giskard_decomposed_obj ${ROS_WS}/src/giskardpy/tmp
+COPY --chown=${NB_USER}:users binder/giskard_decomposed_obj ${GISKARD_WS}/src/giskardpy/tmp
 # Copy contents of the repo into the image
 COPY --chown=${NB_USER}:users . /home/${NB_USER}/blockly-playground
 WORKDIR /home/${NB_USER}/blockly-playground
 RUN git config --global --add safe.directory ${PWD}
 # Link the ROS workspace directory to the working directory
-RUN ln -s ${ROS_WS} ${PWD}/ROS_WS
+RUN ln -s ${GISKARD_WS} ${PWD}/GISKARD_WS
 
 # Install blockly jupyterlab extension from source
 RUN cd jupyterlab-blockly && \
@@ -60,7 +68,7 @@ RUN cd jupyterlab-blockly && \
     jupyter labextension develop . --overwrite && \
     npm run build
 
-# Install from build package
+# Install blockly jupyterlab extension from built package
 # RUN pip install https://raw.githubusercontent.com/yxzhan/jupyterlab-blockly/dev/dist/jupyterlab_blockly-0.3.0a4.tar.gz
 
 # jupyterlab interface configuration
