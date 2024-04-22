@@ -12,11 +12,11 @@ execute_process(
 
 execute_process(
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMAND mkdir -p jovyan/workspace/ros/
+  COMMAND mkdir -p jovyan
 )
 
 execute_process(
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-  COMMAND ln -s /home/jovyan/workspace/ros/src jovyan/workspace/ros/src
+  COMMAND ln -s /home/jovyan/workspace jovyan/workspace
 )
 
