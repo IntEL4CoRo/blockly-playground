@@ -1,9 +1,7 @@
 import rospy
-from ipywidgets import Button, Layout, GridBox, VBox, Box, FloatSlider, Checkbox, interact
+from ipywidgets import Layout, VBox, Box, FloatSlider
 from giskardpy.python_interface.python_interface import GiskardWrapper
-from giskardpy.goals.joint_goals import JointPositionList
-from giskardpy.monitors.joint_monitors import JointGoalReached
-from geometry_msgs.msg import Twist, PoseStamped, Point, Quaternion, Vector3Stamped, PointStamped, QuaternionStamped
+from geometry_msgs.msg import Twist, PoseStamped, Point, Quaternion, PointStamped, QuaternionStamped
 import roslib; roslib.load_manifest('urdfdom_py')
 from rqt_joint_trajectory_controller import joint_limits_urdf
 
@@ -23,10 +21,17 @@ def set_robot_description(cmd_vel='/cmd_vel'):
     global CMD_VEL_TOPIC
     CMD_VEL_TOPIC = cmd_vel
 
-# moving motion
-def add_cartesian_position(pos, root_link='map', tip_link='base_link'):
+# joint position motion
+def add_joint_position(joint_goal_list):
+    joint_goal = {key: value for d in joint_goal_list for key, value in d.items()}
+    gk_wrapper.motion_goals.add_joint_position(goal_state=joint_goal)
+    gk_wrapper.add_default_end_motion_conditions()
+    gk_wrapper.execute()
+
+# position motion
+def add_cartesian_position(pos, root_link='map', tip_link='base_link', frame_id='map'):
     pos_stamp = PointStamped()
-    pos_stamp.header.frame_id = root_link
+    pos_stamp.header.frame_id = frame_id
     pos_stamp.point = pos
     gk_wrapper.add_default_end_motion_conditions()
     gk_wrapper.motion_goals.add_cartesian_position(
@@ -36,10 +41,10 @@ def add_cartesian_position(pos, root_link='map', tip_link='base_link'):
     )
     gk_wrapper.execute()
 
-# rotation motion
-def add_cartesian_orientation(ori, root_link='map', tip_link='base_link'):
+# orientation motion
+def add_cartesian_orientation(ori, root_link='map', tip_link='base_link', frame_id='map'):
     ori_stamp = QuaternionStamped()
-    ori_stamp.header.frame_id = root_link
+    ori_stamp.header.frame_id = frame_id
     ori_stamp.quaternion = ori
     gk_wrapper.add_default_end_motion_conditions()
     gk_wrapper.motion_goals.add_cartesian_orientation(
@@ -49,26 +54,19 @@ def add_cartesian_orientation(ori, root_link='map', tip_link='base_link'):
     )
     gk_wrapper.execute()
 
-# joint position motion
-def add_joint_position(joint_goal_list):
-    joint_goal = {key: value for d in joint_goal_list for key, value in d.items()}
-    gk_wrapper.motion_goals.add_joint_position(goal_state=joint_goal)
-    gk_wrapper.add_default_end_motion_conditions()
-    gk_wrapper.execute()
-
 # add_cartesian_pose
-def add_cartesian_pose(pos, ori, root_link='map', tip_link='base_link'):
+def add_cartesian_pose(pos, ori, root_link='map', tip_link='base_link', frame_id='map'):
     if pos is None and ori is None:
         print("Both position and orientation are None!!!")
         return
     if pos is None:
-        add_cartesian_orientation(ori, root_link=root_link, tip_link=tip_link)
+        add_cartesian_orientation(ori, root_link=root_link, tip_link=tip_link, frame_id=frame_id)
         return
     if ori is None:
-        add_cartesian_position(pos, root_link=root_link, tip_link=tip_link)
+        add_cartesian_position(pos, root_link=root_link, tip_link=tip_link, frame_id=frame_id)
         return
     pose_stamp = PoseStamped()
-    pose_stamp.header.frame_id = root_link
+    pose_stamp.header.frame_id = frame_id
     pose_stamp.pose.position = pos
     pose_stamp.pose.orientation = ori
     gk_wrapper.add_default_end_motion_conditions()
