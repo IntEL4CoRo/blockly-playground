@@ -10,8 +10,8 @@ cd jupyterlab-blockly
 pip install -e .
 jupyter labextension develop . --overwrite
 ln -s ${HOME}/blockly-playground/jupyterlab-blockly/packages/blockly/src/giskard.ts ${HOME}/blockly-playground/examples/blockly.ts
-
 npm run watch &
+
 cd ${HOME}/blockly-playground
 
 exec "$@"

@@ -63,10 +63,7 @@ RUN git config --global --add safe.directory ${PWD}
 RUN ln -s ${GISKARD_WS} ${PWD}/GISKARD_WS
 
 # Install blockly jupyterlab extension from source
-RUN cd jupyterlab-blockly && \
-    pip install -e ".[dev]" && \
-    jupyter labextension develop . --overwrite && \
-    npm run build
+RUN cd jupyterlab-blockly && pip install -e .
 
 # Install blockly jupyterlab extension from built package
 # RUN pip install https://raw.githubusercontent.com/yxzhan/jupyterlab-blockly/dev/dist/jupyterlab_blockly-0.3.0a4.tar.gz
