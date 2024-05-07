@@ -6,12 +6,12 @@ roslaunch --wait rvizweb rvizweb.launch config_file:=/home/${NB_USER}/blockly-pl
 roslaunch --wait /home/jovyan/blockly-playground/launch/stretch_standalone.launch &
 
 # Install the jupyterlab-blockly extension in development mode
-cd jupyterlab-blockly
-pip install -e .
-jupyter labextension develop . --overwrite
-ln -s ${HOME}/blockly-playground/jupyterlab-blockly/packages/blockly/src/giskard.ts ${HOME}/blockly-playground/examples/blockly.ts
-npm run watch &
+# cd jupyterlab-blockly
+# pip install -e .
+# jupyter labextension develop . --overwrite
+# ln -s ${HOME}/blockly-playground/jupyterlab-blockly/packages/blockly/src/giskard.ts ${HOME}/blockly-playground/examples/blockly.ts
+# npm run watch &
 
-cd ${HOME}/blockly-playground
+# cd ${HOME}/blockly-playground
 
 exec "$@"
