@@ -1,7 +1,8 @@
 - git:
     local-name: giskardpy
     uri: https://github.com/SemRoCo/giskardpy.git
-    version: mujoco_actions_devel
+    # version: mujoco_actions_devel
+    version: e92431f86e87fc5965871f8001c1ae885a44362f
 - git: 
     local-name: giskard_msgs
     uri: https://github.com/SemRoCo/giskard_msgs.git

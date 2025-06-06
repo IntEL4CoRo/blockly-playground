@@ -12,7 +12,7 @@ services:
       # - 11311:11311
     privileged: true
     # user: root
-    # user: jovyan
+    user: jovyan
     # working_dir: /home/jovyan/
     command: jupyter lab --allow-root --NotebookApp.token='' --no-browser --ip=0.0.0.0
     # entrypoint: ["/home/jovyan/blockly-playground/binder/entrypoint.sh"]

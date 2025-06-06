@@ -14,18 +14,19 @@ import roslib; roslib.load_manifest('urdfdom_py')
 from rqt_joint_trajectory_controller import joint_limits_urdf
 
 # Giskard wrapper instance
-gk_wrapper = None
+rospy.init_node('giskard_playground')
+gk_wrapper = GiskardWrapper()
 
 # Directory of the ROS launch files
 LAUNCH_FILE_DIR = os.path.abspath(os.path.join(os.getcwd(), "../launch"))
 # To display visualization tools on the left
 SIDECAR = {
     'rvizweb': None,
-    'xpra': None
+    'desktop': None
 }
 VIS_TOOLS = {
     'rvizweb': False,
-    'xpra': False
+    'desktop': False
 }
 # To manage the roslaunch process in the background
 LAUNCH_PROCESS = None
@@ -60,17 +61,17 @@ def open_rvizweb():
     except Exception as e:
         print('Can not fetch rvizweb url.')
 
-# Open XPRA Desktop
-def open_xpra():
-    if not VIS_TOOLS['xpra']:
+# Open Desktop
+def open_desktop():
+    if not VIS_TOOLS['desktop']:
         return False
-    if SIDECAR['xpra'] is not None:
+    if SIDECAR['desktop'] is not None:
         return True
-    SIDECAR['xpra'] = Sidecar(title='XRPA', anchor='right')
+    SIDECAR['desktop'] = Sidecar(title='XRPA', anchor='right')
     url_prefix = f"/user/{JUPYTERHUB_USER}" if JUPYTERHUB_USER is not None else ''
-    xpra_url = f"{url_prefix}/xprahtml5/index.html"
-    with SIDECAR['xpra']:
-        display(resizable_iframe(xpra_url))
+    desktop_url = f"{url_prefix}/desktop"
+    with SIDECAR['desktop']:
+        display(resizable_iframe(desktop_url))
 
 # Execute the roslaunch command
 def _launch_robot(config):
@@ -93,12 +94,12 @@ def _launch_robot(config):
     command = [
         'roslaunch',
         launchfile,
-        'mujoco_suffix:=' + ('' if VIS_TOOLS['xpra'] else '_headless')
+        'mujoco_suffix:=' + ('' if VIS_TOOLS['desktop'] else '_headless')
     ]
     if 'extra_param' in config:
         command.append(config['extra_param'])
     open_rvizweb()
-    open_xpra()
+    open_desktop()
     print("Executing command:\n" + \
         ' '.join(command) + '\n' + \
         "in the background, the output will be hidden.\n" + \
@@ -211,10 +212,10 @@ def launch_robot(robot, sim_env=None, restart=True):
             robot_dict[robot]['extra_param'] = f'mujoco_world:={env_dict[sim_env]}'
             # if sim_env in ['Apartment', 'Kitchen']:
             #     VIS_TOOLS['rvizweb'] = False
-            #     VIS_TOOLS['xpra'] = True
+            #     VIS_TOOLS['desktop'] = True
             # else:
             #     VIS_TOOLS['rvizweb'] = True
-            #     VIS_TOOLS['xpra'] = False
+            #     VIS_TOOLS['desktop'] = False
         _launch_robot(robot_dict[robot])
         rospy.init_node('giskard_playground')
         gk_wrapper = GiskardWrapper()

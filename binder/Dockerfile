@@ -1,4 +1,4 @@
-FROM intel4coro/base-notebook:20.04-noetic
+FROM intel4coro/base-notebook:20.04-noetic-vnc
 
 # Initiate ROS workspace
 ENV ROS_WS=/home/${NB_USER}/workspace/ros
@@ -28,7 +28,7 @@ RUN mkdir ${MUJOCO_WORLD_PATH}/mujoco_world && \
 # Install dependencies
 WORKDIR  ${ROS_WS}
 USER root
-RUN rosdep update && apt update && apt dist-upgrade -y \
+RUN rosdep update --include-eol-distros && apt update \
   && rosdep install -y --ignore-src --from-paths ./ -r \
   && rosdep fix-permissions
 # Install missing apt packages to build ROS package 'qpoases'
@@ -59,11 +59,21 @@ ENV PYTHONPATH=${PYTHONPATH}:/home/${NB_USER}/bullet3/build_cmake/better_python:
 WORKDIR  ${ROS_WS}
 # Can not build package iai_pr2_donbot and it is not used
 RUN rm -rf src/iai_pr2/iai_pr2_donbot
+RUN rm -rf src/iai_pr2/iai_pr2_sim/CATKIN_IGNORE
 RUN catkin build
 
 # Install blockly jupyterlab extensions
 RUN npm install -g yarn
-RUN pip install jupyterlab-git~=0.44.0
+# Update the rvizweb
+RUN cd ${ROS_WS}/src/rvizweb && git pull
+# Update the blockly extensions
+RUN pip install git+https://github.com/yxzhan/jupyterlab-blockly.git@dev
+
+# Install missing python packages
+RUN pip install \
+    jupyterlab-git~=0.44.0 \
+    py_trees==0.7.6 \
+    rospy-message-converter
 
 # Copy the giskard tmp meshes to skip the converting step
 COPY --chown=${NB_USER}:users binder/giskard_decomposed_obj ${ROS_WS}/src/giskardpy/tmp
@@ -74,8 +84,11 @@ RUN git config --global --add safe.directory ${PWD}
 # Link the ROS workspace directory to the working directory
 RUN ln -s ${ROS_WS} ${PWD}/ROS_WS
 # Overrides the kitchen and apartment xml files
-COPY --chown=${NB_USER}:users ./launch/mujoco_config/iai_apartment_with_window4.xml ${ROS_WS}/src/mujoco_world/mujoco_world/model/iai_apartment/
-COPY --chown=${NB_USER}:users ./launch/mujoco_config/iai_kitchen_python.xml ${ROS_WS}/src/mujoco_world/mujoco_world/model/iai_kitchen/
+ARG MJ_WORLD_PATH=${ROS_WS}/src/mujoco_world/mujoco_world/model
+RUN rm ${MJ_WORLD_PATH}/iai_apartment/iai_apartment_with_window4.xml
+RUN ln -s ${PWD}/launch/mujoco_config/iai_apartment_with_window4.xml ${MJ_WORLD_PATH}/iai_apartment/iai_apartment_with_window4.xml
+RUN rm ${MJ_WORLD_PATH}/iai_kitchen/iai_kitchen_python.xml
+RUN ln -s ${PWD}/launch/mujoco_config/iai_kitchen_python.xml ${MJ_WORLD_PATH}/iai_kitchen/iai_apartment_with_window4.xml
 
 # jupyterlab interface configuration
 COPY --chown=${NB_USER}:users binder/webapps.json ${ROS_WS}/src/rvizweb/webapps/app.json
@@ -83,8 +96,3 @@ COPY --chown=${NB_USER}:users binder/jupyter-settings.json /opt/conda/share/jupy
 COPY --chown=${NB_USER}:users binder/entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["start-notebook.sh"]
-
-# Update the rvizweb
-RUN cd ${ROS_WS}/src/rvizweb && git pull
-# Update the blockly extensions
-RUN pip install git+https://github.com/yxzhan/jupyterlab-blockly.git@dev

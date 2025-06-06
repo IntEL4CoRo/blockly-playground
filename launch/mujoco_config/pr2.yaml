@@ -1,3 +1,5 @@
+pose_init: [1.5, 2.5, 0, 0, 0, 0]
+
 joint_inits:
   torso_lift_joint: 0.1687062500000004
   r_upper_arm_roll_joint: 0

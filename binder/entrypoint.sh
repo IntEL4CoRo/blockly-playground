@@ -5,4 +5,6 @@ roslaunch --wait rvizweb rvizweb.launch config_file:=${PWD}/launch/rvizweb_confi
 
 jupyter lab workspaces import  ${PWD}/binder/jupyterlab-workspace.json
 
+# roslaunch ${PWD}/launch/pr2_mujoco.launch mujoco_suffix:=_headless &
+
 exec "$@"

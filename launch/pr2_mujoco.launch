@@ -3,7 +3,7 @@
     <arg name="gui" default="false"/>
     <arg name="mujoco_suffix" default=""/>
     <arg name="mujoco_robot" default="$(find iai_pr2_description)/robots/pr2_calibrated_with_ft2_without_virtual_joints.urdf"/>
-    <arg name="mujoco_world" default="$(dirname)/mujoco_config/world.xml"/>
+    <arg name="mujoco_world" default="$(find mujoco_world)/model/iai_apartment/iai_apartment_with_window4.xml"/>
 
     <!-- From iai_pr2_sim mujoco.launch -->
     <arg name="namespace" default="pr2" />
