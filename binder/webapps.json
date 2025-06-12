@@ -7,10 +7,9 @@
     "start": true
   },
   {
-    "name": "XPRA",
-    "title": "Xpra Desktop",
-    "icon": "proxy/8001/rvizweb/webapps/xpra-logo.svg",
-    "url": "xprahtml5/index.html"
+    "name": "desktop",
+    "title": "Desktop",
+    "url": "desktop"
   },
   {
     "name": "rosgraph",
