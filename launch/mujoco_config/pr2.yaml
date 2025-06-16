@@ -1,4 +1,4 @@
-pose_init: [1.5, 2.5, 0, 0, 0, 0]
+pose_init: [1.3, 2.5, 0, 0, 0, 0]
 
 joint_inits:
   torso_lift_joint: 0.1687062500000004

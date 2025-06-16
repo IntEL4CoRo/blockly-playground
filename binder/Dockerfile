@@ -90,9 +90,14 @@ RUN ln -s ${PWD}/launch/mujoco_config/iai_apartment_with_window4.xml ${MJ_WORLD_
 RUN rm ${MJ_WORLD_PATH}/iai_kitchen/iai_kitchen_python.xml
 RUN ln -s ${PWD}/launch/mujoco_config/iai_kitchen_python.xml ${MJ_WORLD_PATH}/iai_kitchen/iai_apartment_with_window4.xml
 
+# Setup Ipython startup script (Open Rviz)
+RUN ipython profile create && \
+    ln -s /home/${NB_USER}/blockly-playground/examples/00-first.py \
+    /home/${NB_USER}/.ipython/profile_default/startup/00-first.py
+# Disable RVIZ EOL warning
+ENV DISABLE_ROS1_EOL_WARNINGS=1
 # jupyterlab interface configuration
 COPY --chown=${NB_USER}:users binder/webapps.json ${ROS_WS}/src/rvizweb/webapps/app.json
-COPY --chown=${NB_USER}:users binder/jupyter-settings.json /opt/conda/share/jupyter/lab/settings/overrides.json
 COPY --chown=${NB_USER}:users binder/entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["start-notebook.sh"]

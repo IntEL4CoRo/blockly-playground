@@ -21,7 +21,7 @@
               "type": "tab-area",
               "currentIndex": 0,
               "widgets": [
-                "rviz-rvizweb:rviz-rvizweb"
+                "rviz-desktop:rviz-desktop"
               ]
             }
           ]
@@ -56,7 +56,7 @@
         0
       ]
     },
-    "rviz-rvizweb:rviz-rvizweb": {
+    "rviz-desktop:rviz-desktop": {
       "data": {}
     },
     "rviz-rosgraph:rviz-rosgraph": {

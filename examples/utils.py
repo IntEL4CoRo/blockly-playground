@@ -67,7 +67,7 @@ def open_desktop():
         return False
     if SIDECAR['desktop'] is not None:
         return True
-    SIDECAR['desktop'] = Sidecar(title='XRPA', anchor='right')
+    SIDECAR['desktop'] = Sidecar(title='RVIZ', anchor='split-right')
     url_prefix = f"/user/{JUPYTERHUB_USER}" if JUPYTERHUB_USER is not None else ''
     desktop_url = f"{url_prefix}/desktop"
     with SIDECAR['desktop']:
@@ -156,12 +156,12 @@ def add_cartesian_pose(pos, ori, root_link='map', tip_link='base_link'):
     pose_stamp.header.frame_id = root_link
     pose_stamp.pose.position = pos
     pose_stamp.pose.orientation = ori
-    gk_wrapper.add_default_end_motion_conditions()
     gk_wrapper.motion_goals.add_cartesian_pose(
         root_link=root_link,
         tip_link=tip_link,
         goal_pose=pose_stamp,
     )
+    gk_wrapper.add_default_end_motion_conditions()
     gk_wrapper.execute()
 
 # get robot links
@@ -243,7 +243,6 @@ def cmd_vel_turn(speed, time):
     
 def debug_func():
     print('A flexible function for testing')
-
 
 
 def display_joint_trajectory_controller():

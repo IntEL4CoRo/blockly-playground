@@ -6,7 +6,7 @@
 - git: 
     local-name: giskard_msgs
     uri: https://github.com/SemRoCo/giskard_msgs.git
-    version: devel
+    version: 4ab505088cdef21d0cdd06a787b4243532c6e01e
 - git:
     local-name: qpoases
     uri: https://github.com/SemRoCo/qpOASES.git
