@@ -3,7 +3,8 @@
     "name": "rvizweb",
     "title": "Rvizweb",
     "url": "proxy/8001/rvizweb/webapps/rvizweb/build/www/index.html",
-    "mode": "split-right"
+    "mode": "split-right",
+    "start": true
   },
   {
     "name": "rosgraph",
@@ -16,8 +17,7 @@
     "name": "desktop",
     "title": "Desktop",
     "url": "desktop",
-    "mode": "split-right",
-    "start": true
+    "mode": "split-right"
   },
   {
     "name": "rosboard",

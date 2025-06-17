@@ -84,4 +84,4 @@ def launch_sim(launchfile="pr2_mujoco.launch"):
     thread.start()
 
 launch_sim()
-launch_rviz()
+# launch_rviz()
