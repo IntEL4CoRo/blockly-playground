@@ -46,11 +46,11 @@ def display_desktop():
 def run_background_command(cmd):
     process = subprocess.Popen(
         cmd,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
         preexec_fn=os.setpgrp
     )
-    # print(f"Started process with PID {process.pid}")
+    print(f"Started process with PID {process.pid}")
     process.wait()
 
 # Run rivz2 in the background
@@ -64,24 +64,24 @@ def launch_rviz(config='pr2.rviz'):
 
     if is_rviz_running == False:
         thread = threading.Thread(target=run_background_command, kwargs={
-            # "cmd":["rviz", "--disable-anti-aliasing", "--fullscreen", "-d", config]
-            "cmd":["rviz", "--fullscreen", "-d", config]
+            "cmd":["rviz", "--disable-anti-aliasing", "--fullscreen", "-d", config]
+            # "cmd":["rviz", "--fullscreen", "-d", config]
         }, daemon=True)
         thread.start()
         
 def launch_sim(launchfile="pr2_mujoco.launch"):
+    LAUNCH_FILE_DIR = os.path.abspath(os.path.join(os.getcwd(), "../launch"))
+    LAUNCH_CMD = ["roslaunch",
+        os.path.join(LAUNCH_FILE_DIR, launchfile),
+        "mujoco_suffix:=_headless"]
     try:
-        subprocess.run(["killall", "pr2_mujoco.py"], check=False)
-        subprocess.run(["killall", "mujoco_sim_head"], check=False)
+        subprocess.run(["pkill", "-f", launchfile], check=False)
     except Exception as e:
         pass
-    LAUNCH_FILE_DIR = os.path.abspath(os.path.join(os.getcwd(), "../launch"))
     thread = threading.Thread(target=run_background_command, kwargs={
-        "cmd":["roslaunch",
-                os.path.join(LAUNCH_FILE_DIR, launchfile),
-                "mujoco_suffix:=_headless"]
+        "cmd": LAUNCH_CMD
     }, daemon=True)
     thread.start()
 
-# launch_sim()
+launch_sim()
 launch_rviz()

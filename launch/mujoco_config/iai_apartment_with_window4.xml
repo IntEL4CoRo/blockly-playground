@@ -709,88 +709,104 @@
         <exclude body1="apartment" body2="cabinet11_drawer2" />
         <exclude body1="apartment" body2="cabinet11_drawer3" />
     </contact>
-<worldbody><body name="ballxtomjzCe" pos="2.4 2.2 1.2">
+<worldbody><body name="free_cup_w" pos="2.35 2.2 1.08">
+        <freejoint />
+        <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.0008 0.0008 0.00015" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 0 -0.076" size="0.03 0.03 0.03" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.03 0 0" euler="0 0 0" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.021213 0.021213 0" euler="0 0 0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 0.03 0" euler="0 0 1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.021213 0.021213 0" euler="0 0 2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.03 0 0" euler="0 0 3.141592653589793" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.021213 -0.021213 0" euler="0 0 -2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 -0.03 0" euler="0 0 -1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.021213 -0.021213 0" euler="0 0 -0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="1 1 1 0.6" />
+    </body></worldbody><worldbody><body name="ballwuBvlezK" pos="2.35 2.2 1.1448">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballDzQDkhuZ" pos="2.5 2.2 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.018" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.018" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballyZCdpaAY" pos="2.35 2.2 1.2096">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballZTpxOYln" pos="2.6 2.2 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.018" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.018" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballkGUGVDKm" pos="2.35 2.2 1.2744">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body></worldbody><worldbody><body name="ballJLHzxNnS" pos="2.4 2.3 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.018" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.018" rgba="0.678 0.847 0.902 1" />
+       </body></worldbody><worldbody><body name="free_cup_g" pos="2.35 2.5 1.08">
+        <freejoint />
+        <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.0008 0.0008 0.00015" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 0 -0.076" size="0.03 0.03 0.03" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.03 0 0" euler="0 0 0" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.021213 0.021213 0" euler="0 0 0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 0.03 0" euler="0 0 1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.021213 0.021213 0" euler="0 0 2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.03 0 0" euler="0 0 3.141592653589793" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.021213 -0.021213 0" euler="0 0 -2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 -0.03 0" euler="0 0 -1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.021213 -0.021213 0" euler="0 0 -0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="0 1 0 0.4" />
+    </body></worldbody><worldbody><body name="ballihfeBGqJ" pos="2.35 2.5 1.1448">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="balllcbsMSxT" pos="2.5 2.3 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.018" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.018" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballVggiCQzD" pos="2.35 2.5 1.2096">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballAFCRsrXJ" pos="2.6 2.3 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.018" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.018" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballKWRKPGFf" pos="2.35 2.5 1.2744">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body></worldbody><worldbody><body name="ballzSGknlYh" pos="2.4 2.4 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.018" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.018" rgba="0.678 0.847 0.902 1" />
+       </body></worldbody><worldbody><body name="free_cup_b" pos="2.35 2.8 1.08">
+        <freejoint />
+        <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.0008 0.0008 0.00015" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 0 -0.076" size="0.03 0.03 0.03" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.03 0 0" euler="0 0 0" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.021213 0.021213 0" euler="0 0 0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 0.03 0" euler="0 0 1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.021213 0.021213 0" euler="0 0 2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.03 0 0" euler="0 0 3.141592653589793" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="-0.021213 -0.021213 0" euler="0 0 -2.356194490192345" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0 -0.03 0" euler="0 0 -1.5707963267948966" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+        <geom friction="2.8 0.005 0.0001" type="box" pos="0.021213 -0.021213 0" euler="0 0 -0.7853981633974483" size="0.0044 0.013420519420888278 0.08" rgba="1 0 0 0.4" />
+    </body></worldbody><worldbody><body name="ballAMsllXdV" pos="2.35 2.8 1.2000000000000002">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="balleLlqUcaJ" pos="2.5 2.4 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballBLKpwpcD" pos="2.35 2.8 1.3200000000000003">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballhitWTVqp" pos="2.6 2.4 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="balltcYXBXMY" pos="2.35 2.8 1.4400000000000004">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body></worldbody><worldbody><body name="ballULxqDFyw" pos="2.4 2.5 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballmwsRWnHP" pos="2.35 2.8 1.5600000000000005">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballcrgpwvBr" pos="2.5 2.5 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballHxXDuVfd" pos="2.35 2.8 1.6800000000000006">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballGzDGwjNs" pos="2.6 2.5 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballpWfVyUoL" pos="2.35 2.8 1.8000000000000007">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body></worldbody><worldbody><body name="ballGwLbLwzI" pos="2.4 2.6 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballfPemZnsl" pos="2.35 2.8 1.9200000000000008">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballRBjQwzBL" pos="2.5 2.6 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballAgqnkbDR" pos="2.35 2.8 2.040000000000001">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballulYrHwXg" pos="2.6 2.6 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballijzBpzgb" pos="2.35 2.8 2.160000000000001">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body></worldbody><worldbody><body name="ballXCiJDiWr" pos="2.4 2.7 1.2">
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
+       </body><body name="ballxMKFHtHP" pos="2.35 2.8 2.280000000000001">
             <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballanpRkrzN" pos="2.5 2.7 1.2">
-            <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballQOUixRzM" pos="2.6 2.7 1.2">
-            <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body></worldbody><worldbody><body name="ballkSsjRDUI" pos="2.4 2.8 1.2">
-            <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballmljTHVDP" pos="2.5 2.8 1.2">
-            <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
-       </body><body name="ballitOhmDwy" pos="2.6 2.8 1.2">
-            <freejoint />
-            <inertial pos="0.0 0.0 0.0" mass="0.0005" diaginertia="0.000000001 0.000000001 0.000000001" />
-            <geom type="box" pos="0 0 0" size="0.02 0.02 0.1" rgba="1 1 0 1" />
+            <inertial pos="0.0 0.0 0.0" mass="0.01" diaginertia="0.000000001 0.000000001 0.000000001" />
+            <geom friction="1 0.005 0.0001" type="sphere" size="0.01" rgba="0.678 0.847 0.902 1" />
        </body></worldbody></mujoco>
