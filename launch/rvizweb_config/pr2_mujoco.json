@@ -62,6 +62,15 @@
         "topic": "/mujoco/visualization_marker_array"
       },
       "type": "markerArray"
+    },
+    {
+      "isShown": true,
+      "name": "Robot model",
+      "options": {
+        "param": "apartment_description",
+        "tfPrefix": "iai_apartment"
+      },
+      "type": "urdf"
     }
   ]
 }

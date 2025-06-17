@@ -64,8 +64,8 @@ def launch_rviz(config='pr2.rviz'):
 
     if is_rviz_running == False:
         thread = threading.Thread(target=run_background_command, kwargs={
-            "cmd":["rviz", "--disable-anti-aliasing", "--fullscreen", "-d", config]
-            # "cmd":["rviz", "--fullscreen", "-d", config]
+            # "cmd":["rviz", "--disable-anti-aliasing", "--no-stereo", "--fullscreen", "-d", config]
+            "cmd":["rviz", "--fullscreen", "-d", config]
         }, daemon=True)
         thread.start()
         

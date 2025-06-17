@@ -12,21 +12,22 @@
           "children": [
             {
               "type": "tab-area",
-              "currentIndex": 0,
+              "currentIndex": 1,
               "widgets": [
-                "rviz-rosgraph:rviz-rosgraph"
+                "rviz-rosgraph:rviz-rosgraph",
+                "jupyterlab-blocky:examples/playground.jpblockly"
               ]
             },
             {
               "type": "tab-area",
               "currentIndex": 0,
               "widgets": [
-                "rviz-desktop:rviz-desktop"
+                "rviz-rvizweb:rviz-rvizweb"
               ]
             }
           ]
         },
-        "current": "rviz-rosgraph:rviz-rosgraph"
+        "current": "jupyterlab-blocky:examples/playground.jpblockly"
       },
       "down": {
         "size": 0,
@@ -56,19 +57,25 @@
         0
       ]
     },
-    "rviz-desktop:rviz-desktop": {
+    "rviz-rvizweb:rviz-rvizweb": {
       "data": {}
     },
     "rviz-rosgraph:rviz-rosgraph": {
       "data": {}
     },
     "file-browser-filebrowser:cwd": {
-      "path": "notebooks"
+      "path": "examples"
+    },
+    "jupyterlab-blocky:examples/playground.jpblockly": {
+      "data": {
+        "path": "examples/playground.jpblockly",
+        "factory": "Blockly editor"
+      }
     }
   },
   "metadata": {
     "id": "default",
-    "last_modified": "2024-03-28T12:57:12.418976+00:00",
-    "created": "2024-03-28T12:57:12.418976+00:00"
+    "last_modified": "2025-06-17T14:02:23.828734+00:00",
+    "created": "2025-06-17T14:02:23.828734+00:00"
   }
 }
