@@ -23,6 +23,6 @@ RUN pip install lxml matplotlib
 COPY --chown=${NB_USER}:users . /home/${NB_USER}/blockly-playground
 
 # --- Entrypoint --- #
-COPY --chown=${NB_USER}:users entrypoint.sh /
+COPY --chown=${NB_USER}:users binder/entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
 CMD [ "start-notebook.sh" ]
