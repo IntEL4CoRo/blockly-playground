@@ -1,7 +1,7 @@
 FROM intel4coro/jupyter-ros2:humble-py3.10
 
 USER ${NB_USER}
-COPY --chown=${NB_USER}:users install_hsr_sim.sh /home/${NB_USER}/
+COPY --chown=${NB_USER}:users binder/install_hsr_sim.sh /home/${NB_USER}/
 RUN chmod +x ~/install_hsr_sim.sh && \
     ~/install_hsr_sim.sh && \
     rm ~/install_hsr_sim.sh
